@@ -1,5 +1,7 @@
 package linearLightsOut;
 
+import java.awt.Dimension;
+
 import javax.swing.JButton;
 
 public class LightButton extends JButton{
@@ -8,6 +10,7 @@ public class LightButton extends JButton{
 	LightButton(){
 		super();
 		this.setText(this.nameGenerator());
+		this.setPreferredSize(new Dimension(100,100));
 	}
 	
 	private String nameGenerator(){
