@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 public class LightsOutFrame extends JFrame {
 	FullPanel fullPanel;
+	int nButtons;
 
 	public LightsOutFrame() {
 		super();
@@ -20,8 +21,17 @@ public class LightsOutFrame extends JFrame {
 	}
 
 	public void getButtons(int nButtons) {
+		this.nButtons = nButtons;
 		this.fullPanel.getButtons(nButtons);
 		this.setSize(70*nButtons, 200);
 		this.setVisible(true);
+	}
+	
+	public int getNButtons(){
+		return this.nButtons;
+	}
+	
+	public void getFrame(){
+		this.fullPanel.getFrame(this);
 	}
 }

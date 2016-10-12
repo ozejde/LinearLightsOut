@@ -21,5 +21,9 @@ public class FullPanel extends JPanel{
 		this.buttonPanel.getButtons(nButtons1);
 	}
 	
+	public void getFrame(LightsOutFrame frame){
+		this.buttonPanel.getFrame(frame); 
+		this.controlPanel.getFrame(frame);
+	};
 	
 }

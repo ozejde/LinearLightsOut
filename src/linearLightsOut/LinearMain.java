@@ -20,6 +20,7 @@ public class LinearMain {
 		
 		LightsOutFrame lightsOutFrame = new LightsOutFrame();
 		lightsOutFrame.getButtons(nButtons);
+		lightsOutFrame.getFrame();
 	
 		// you'll want to think about how you want to manage the state of the
 		// game

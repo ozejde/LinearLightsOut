@@ -5,13 +5,13 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 
 public class LightButton extends JButton{
-	private JButton button; 
 	
 	LightButton(){
 		super();
 		this.setText(this.nameGenerator());
 		this.setPreferredSize(new Dimension(50,30));
 		
+		this.addActionListener(new ButtonListener(this, "LightButton"));
 	}
 	
 	private String nameGenerator(){
@@ -21,7 +21,6 @@ public class LightButton extends JButton{
 		}
 		return "X";
 	}
-	
 
 
 }
