@@ -17,6 +17,7 @@ public class ButtonPanel extends JPanel{
 		this.buttons = new ArrayList<>();
 	}
 
+	
 	public void getButtons(int nButtons) {
 		
 		for (int i = 0; i < nButtons; i++) {
@@ -25,6 +26,10 @@ public class ButtonPanel extends JPanel{
 			this.add(this.lightButton);
 			
 		}
+	}
+	
+	public  ArrayList<LightButton> getLights(){
+		return this.buttons;
 	}
 	
 	public void getFrame(LightsOutFrame frame){

@@ -1,5 +1,7 @@
 package linearLightsOut;
 
+import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
@@ -13,6 +15,7 @@ public class LightsOutFrame extends JFrame {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(700, 400);
+		this.setMinimumSize(new Dimension(275,200));
 		this.getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
 		this.fullPanel = new FullPanel();

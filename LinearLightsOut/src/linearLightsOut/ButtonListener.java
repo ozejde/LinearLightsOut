@@ -2,6 +2,7 @@ package linearLightsOut;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,28 +19,61 @@ public class ButtonListener implements ActionListener {
 		this.type = type;
 	}
 
+	public void setButtonText(JButton button) {
+		if (button.getText().equals("X")) {
+			button.setText("O");
+		} else {
+			button.setText("X");
+		}
+	}
 	
-	
+	public boolean checkIfWinner(ArrayList<LightButton> buttons){
+		String firstLetter = buttons.get(0).getText();
+		for(int i=1;i<buttons.size();i++){
+			if(!buttons.get(i).getText().equals(firstLetter)){
+				return false;
+			}
+		}
+		return true;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
 		if (this.type.equals("LightButton")) {
-			if (button.getText().equals("X")) {
-				this.button.setText("O");
+			ButtonPanel panel = (ButtonPanel) this.button.getParent();
+			ArrayList<LightButton> buttons = panel.getLights();
+			int index = buttons.indexOf(this.button);
+
+			this.setButtonText(this.button);
+
+			if (index == 0) {
+				this.setButtonText(buttons.get(1));
+			} else if (index == buttons.size() - 1) {
+				this.setButtonText(buttons.get(index - 1));
 			} else {
-				this.button.setText("X");
+				this.setButtonText(buttons.get(index - 1));
+				this.setButtonText(buttons.get(index + 1));
 			}
+			
+			if(checkIfWinner(buttons)){
+				JFrame frame = (JFrame) SwingUtilities.getRoot(this.button);
+				frame.setTitle("You win!");
+			}
+
 		}
-		
-		if(this.type.equals("QuitButton")){
+
+		if (this.type.equals("QuitButton")) {
 			System.exit(0);
 		}
-		
-		if(this.type.equals("NewGameButton")){
+
+		if (this.type.equals("NewGameButton")) {
+
 			JFrame frame = (JFrame) SwingUtilities.getRoot(this.button);
+
 			int nButtons = ((LightsOutFrame) frame).getNButtons();
 			frame.dispose();
-			
+
 			LightsOutFrame lightsOutFrame = new LightsOutFrame();
 			lightsOutFrame.getButtons(nButtons);
 			lightsOutFrame.getFrame();
