@@ -1,6 +1,7 @@
 package linearLightsOut;
 
-import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+
 import javax.swing.JPanel;
 
 public class ButtonPanel extends JPanel {
@@ -9,7 +10,7 @@ public class ButtonPanel extends JPanel {
 
 	public ButtonPanel() {
 		super();
-		this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+		this.setLayout(new FlowLayout());
 	}
 
 	public void getButtons(int nButtons) {
