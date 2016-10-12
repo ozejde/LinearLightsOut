@@ -17,13 +17,9 @@ public class LinearMain {
 	public static void main(String[] args) {
 		String nButtonsString = JOptionPane.showInputDialog("How many buttons would you like?");
 		int nButtons = Integer.parseInt(nButtonsString);
-		
+
 		LightsOutFrame lightsOutFrame = new LightsOutFrame();
 		lightsOutFrame.getButtons(nButtons);
-		lightsOutFrame.getFrame();
-	
-		// you'll want to think about how you want to manage the state of the
-		// game
-		// also you want to add some buttons and stuff
+
 	}
 }

@@ -8,17 +8,38 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+/**
+ * 
+ * Handles the actions of all buttons that are clicked
+ *
+ * @author ejdeoz. Created Oct 10, 2016.
+ */
+
 public class ButtonListener implements ActionListener {
 	private JButton button;
 	private String type;
-	private LightsOutFrame frame;
-	private NewGameButton newGameButton;
 
+	/**
+	 * 
+	 * Constructs a ButtonListener object
+	 *
+	 * @param button
+	 *            button that is clicked
+	 * @param type
+	 *            String name of button class
+	 */
 	public ButtonListener(JButton button, String type) {
 		this.button = button;
 		this.type = type;
 	}
 
+	/**
+	 * 
+	 * Changes the text of the given LightButton
+	 *
+	 * @param button
+	 *            LightButton that needs to change text
+	 */
 	public void setButtonText(JButton button) {
 		if (button.getText().equals("X")) {
 			button.setText("O");
@@ -26,11 +47,19 @@ public class ButtonListener implements ActionListener {
 			button.setText("X");
 		}
 	}
-	
-	public boolean checkIfWinner(ArrayList<LightButton> buttons){
+
+	/**
+	 * 
+	 * Checks if all of the LightButtons have the same text
+	 *
+	 * @param buttons
+	 *            ArrayList of buttons in the game
+	 * @return boolean of if buttons have the same text
+	 */
+	public boolean checkIfWinner(ArrayList<LightButton> buttons) {
 		String firstLetter = buttons.get(0).getText();
-		for(int i=1;i<buttons.size();i++){
-			if(!buttons.get(i).getText().equals(firstLetter)){
+		for (int i = 1; i < buttons.size(); i++) {
+			if (!buttons.get(i).getText().equals(firstLetter)) {
 				return false;
 			}
 		}
@@ -40,6 +69,9 @@ public class ButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
+		/**
+		 * Changes text if LightButton is clicked and checks if player has won
+		 */
 		if (this.type.equals("LightButton")) {
 			ButtonPanel panel = (ButtonPanel) this.button.getParent();
 			ArrayList<LightButton> buttons = panel.getLights();
@@ -55,18 +87,24 @@ public class ButtonListener implements ActionListener {
 				this.setButtonText(buttons.get(index - 1));
 				this.setButtonText(buttons.get(index + 1));
 			}
-			
-			if(checkIfWinner(buttons)){
+
+			if (checkIfWinner(buttons)) {
 				JFrame frame = (JFrame) SwingUtilities.getRoot(this.button);
 				frame.setTitle("You win!");
 			}
 
 		}
 
+		/**
+		 * Exits game if QuitButton is clicked
+		 */
 		if (this.type.equals("QuitButton")) {
 			System.exit(0);
 		}
 
+		/**
+		 * Restarts the game if NewGameButton is clicked
+		 */
 		if (this.type.equals("NewGameButton")) {
 
 			JFrame frame = (JFrame) SwingUtilities.getRoot(this.button);
@@ -76,7 +114,6 @@ public class ButtonListener implements ActionListener {
 
 			LightsOutFrame lightsOutFrame = new LightsOutFrame();
 			lightsOutFrame.getButtons(nButtons);
-			lightsOutFrame.getFrame();
 		}
 	}
 
