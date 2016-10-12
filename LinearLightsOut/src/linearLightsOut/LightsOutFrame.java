@@ -21,7 +21,7 @@ public class LightsOutFrame extends JFrame {
 
 	public void getButtons(int nButtons) {
 		this.fullPanel.getButtons(nButtons);
-		this.setSize(100*nButtons, 200);
+		this.setSize(70*nButtons, 200);
 		this.setVisible(true);
 	}
 }

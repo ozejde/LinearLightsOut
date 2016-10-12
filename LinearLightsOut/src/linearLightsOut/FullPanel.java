@@ -12,8 +12,8 @@ public class FullPanel extends JPanel{
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.buttonPanel = new ButtonPanel();
 		this.controlPanel = new ControlPanel();
-		this.add(buttonPanel);
-		this.add(controlPanel);
+		this.add(this.buttonPanel);
+		this.add(this.controlPanel);
 
 	}
 	

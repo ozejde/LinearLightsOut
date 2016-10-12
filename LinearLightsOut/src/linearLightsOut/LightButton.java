@@ -10,7 +10,8 @@ public class LightButton extends JButton{
 	LightButton(){
 		super();
 		this.setText(this.nameGenerator());
-		this.setPreferredSize(new Dimension(100,100));
+		this.setPreferredSize(new Dimension(50,30));
+		
 	}
 	
 	private String nameGenerator(){
